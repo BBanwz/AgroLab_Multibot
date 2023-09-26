@@ -87,19 +87,19 @@
 Наш пример применения блока
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-У нас в доступе для исследования есть блок “Экология V1.0”. Применяться он будет в качестве средства ``мониторинга состояния среды Agrolab GH`` с автоматизированной системой климат контроля (температура, состав атмосферы, состав почвы, освещенность и др.). Так как участие человека планируется минимальным, а система по своей сути представляет робота, то наиболее подходящий метод снятия информации – протокол DXL. Возможности цифровой лаборатории позволяют осуществить:
+У нас в доступе для исследования есть блок “Экология V1.0”. Применяться он будет в качестве средства ``мониторинга состояния среды Agrolab multibot`` с автоматизированной системой климат контроля (температура, состав атмосферы, состав почвы, освещенность и др.). Так как участие человека планируется минимальным, а система по своей сути представляет робота, то наиболее подходящий метод снятия информации – протокол DXL. Возможности цифровой лаборатории позволяют осуществить:
 
 - создание необходимой прошивки для платы в самом начале проекта;
 
 - проверку достаточности используемых методов наблюдения за средой, калибровку и подбор необходимых настроек датчиков;
 
-- проверку возможностей готовой Agrolab GH до установки постоянных датчиков;
+- проверку возможностей готовой Agrolab multibot до установки постоянных датчиков;
 
 - долгосрочный полевой эксперимент с возможностью удаленного наблюдения.
 
 - сверку результатов измерений на заключительном этапе сборки проекта путем дублирования датчиков и средств обработки информации.  
 
-**Подключение PolusLab к агронабору**
+**Подключение PolusLab к Agrolab multibot**
 
 Для подключения мультидатчика PolusLab к агронабору потребуется соединить мультидатик с управляющей платой агронабора проводами ``dynamixel``.
 
@@ -132,3 +132,137 @@
 Затем с помощью функции ``write1ByteTxRx`` записывается 0 в регистр ``LFS_ENABLE_PUBLISH``, эта строчка отключает чтение показаний всех датчиков полюс, о результатах операции также выводиться сообщение пользователю в последовательный порт. Далее с помощью той же функции ``write1ByteTxRx`` происходит запись номера датчика, который необходимо включить в соответствующий регистр полюс лаба.
 
 Отправка данных со всех датчиков включается и в бесконечном цикле происходит чтение показаний датчика и вывод их в консоль с интервалом в 500 мс.
+
+::
+
+    #include <DynamixelSDK.h>
+    
+    
+    // Control table address
+    #define LFS_CONDUCTIVITY_ID 312 // 310 311 312
+    #define LFS_ENABLE_PUBLISH 24
+    #define LFS_READ_DATA 80
+    #define LFS_WRITE_ENABLED 60
+    
+    // Protocol version
+    #define PROTOCOL_VERSION                2.0                 // See which protocol version is used in the Dynamixel
+    
+    // Default setting
+    #define DXL_ID                          206                   // Dynamixel ID: 1
+    #define BAUDRATE                        115200
+    #define DEVICENAME                      "OpenCR_DXL_Port"   // This definition only has a symbolic meaning and does not affect to any functionality
+    
+    #define CMD_SERIAL                      Serial
+    
+    uint8_t dxl_error = 0;                          // Dynamixel error
+    int32_t dxl_conductivity = 0;               // Present position
+    int dxl_comm_result = COMM_TX_FAIL;             // Communication result
+     
+    void setup()
+    {
+      // Initialize PortHandler instance
+    // Set the port path
+    // Get methods and members of PortHandlerLinux or PortHandlerWindows
+    dynamixel::PortHandler *portHandler = dynamixel::PortHandler::getPortHandler(DEVICENAME);
+    
+    // Initialize PacketHandler instance
+    // Set the protocol version
+    // Get methods and members of Protocol1PacketHandler or Protocol2PacketHandler
+    dynamixel::PacketHandler *packetHandler = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
+         
+      Serial.begin(1000000);
+      while(!Serial);
+    
+      Serial.println("Start..");
+    
+      // Open port
+      if (portHandler->openPort())
+      {
+        Serial.println("Succeeded to open the port!\n");
+      }
+      else
+      {
+        Serial.println("Failed to open the port!\n");
+        return;
+      }
+    
+      // Set port baudrate
+      if (portHandler->setBaudRate(BAUDRATE))
+      {
+        Serial.println("Succeeded to change the baudrate!\n");
+      }
+      else
+      {
+        Serial.println("Failed to change the baudrate!\n");
+        return;
+      }
+    
+    
+            // Disable data publish
+      dxl_comm_result = packetHandler->write1ByteTxRx(portHandler, DXL_ID, LFS_ENABLE_PUBLISH, 0, &dxl_error);
+      if (dxl_comm_result != COMM_SUCCESS)
+      {
+        Serial.println(packetHandler->getTxRxResult(dxl_comm_result));
+      }
+      else if (dxl_error != 0)
+      {
+        Serial.println(packetHandler->getRxPacketError(dxl_error));
+      }
+      else
+      {
+        Serial.println("Dynamixel has been successfully connected \n");
+      }
+            delay(500);
+      // Enable LFS_PRESSURE
+      dxl_comm_result = packetHandler->write1ByteTxRx(portHandler, DXL_ID, LFS_WRITE_ENABLED, LFS_CONDUCTIVITY_ID, &dxl_error);
+      if (dxl_comm_result != COMM_SUCCESS)
+      {
+        Serial.println(packetHandler->getTxRxResult(dxl_comm_result));
+      }
+      else if (dxl_error != 0)
+      {
+        Serial.println(packetHandler->getRxPacketError(dxl_error));
+      }
+      else
+      {
+        Serial.println("Dynamixel device has been successfully connected \n");
+      }
+            delay(500);
+         // Disable data publish
+      dxl_comm_result = packetHandler->write1ByteTxRx(portHandler, DXL_ID, LFS_ENABLE_PUBLISH, 1, &dxl_error);
+      if (dxl_comm_result != COMM_SUCCESS)
+      {
+        Serial.println(packetHandler->getTxRxResult(dxl_comm_result));
+      }
+      else if (dxl_error != 0)
+      {
+        Serial.println(packetHandler->getRxPacketError(dxl_error));
+      }
+      else
+      {
+        Serial.println("Dynamixel device has been successfully connected \n");
+      } 
+      
+      while(1)
+      {
+            delay(500);
+    dxl_comm_result = packetHandler->read4ByteTxRx(portHandler, DXL_ID, LFS_READ_DATA, (uint32_t*)&dxl_conductivity, &dxl_error);
+          if (dxl_comm_result == COMM_SUCCESS)
+          {
+            Serial.println(packetHandler->getTxRxResult(dxl_comm_result));
+            Serial.println("Conductivity:");
+            dxl_conductivity/=10;
+            Serial.println(dxl_conductivity);
+          }
+          else if (dxl_error != 0)
+          {
+            Serial.println(packetHandler->getRxPacketError(dxl_error));
+          }
+          delay(500);
+      }
+    }
+    
+    void loop()
+    {
+    
+    }
