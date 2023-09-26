@@ -1,3 +1,5 @@
+Модули
+======
 
 .. toctree::
    :maxdepth: 3
