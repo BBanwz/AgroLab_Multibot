@@ -2,5 +2,5 @@
 .. toctree::
    :maxdepth: 3
 
-   1.rst
-   2.rst
+   1
+   2
