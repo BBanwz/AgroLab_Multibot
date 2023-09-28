@@ -21,3 +21,9 @@
     }
 
 Агронабор предусматривает возможность управления подачей воды. Для этого используется ШИМ (Широтно-импульсная модуляция) сигнала. Она позволяет запускать подключенное к пину устройство не в полную силу, а, например, в половину мощности. Для этого нужно отправить на пин число от 0 до 255, где 0 – устройство выключено, 255 – устройство работает на максимальной мощности. ШИМ сигнал подается с помощью команды analogWrite, аргументы – номер пина, на который требуется подать сигнал и значение ШИМ.
+
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="https://www.youtube.com/embed/cI3PkJPc-PQ?si=VuQEow4Pk4iLQmuk" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
