@@ -11,4 +11,5 @@
    3Pump
    4LED
    5DHT
+   6Full
    
