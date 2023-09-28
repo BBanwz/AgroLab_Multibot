@@ -139,3 +139,25 @@
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
         <iframe src="https://www.youtube.com/embed/qRiqiA-rjqs?si=o6Cg6KWSI_QEd9or" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
+
+Прошивка платы нижнего уровня
+-----------------------------
+
+При нажатии в окне ``“Настройки”`` кнопки ``“Прошивка”`` откроется диалоговое окно, в котором нужно выбрать файл для загрузки в плату нижнего уровня. Диалоговое окно позволяет выбрать только файлы с ``расширением bin``, в плату возможно загрузить только предварительно скомпилированный код. 
+
+.. figure:: images/9.png
+       :width: 60%
+       :align: center
+       :alt: Обзор доступного нам интерфейса
+
+Для выбора файла, находящегося на flash – карте необходимо перейти в папку::
+
+    /media/orangepi/название-flash-карты 
+
+и выбрать соответствующий файл. Далее требуется нажать кнопку “Open”, после этого начнется загрузка в плату, появится экран загрузки. После завершения загрузки отобразится главная страница графического интерфейса. 
+
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="https://www.youtube.com/embed/iM4HFAofSFk?si=tov9zETgoYuw11rh" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
