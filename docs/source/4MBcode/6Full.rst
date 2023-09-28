@@ -4,7 +4,7 @@
 .. raw:: html
 
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube.com/embed/ale8ffHSO04?si=b_7ZYSScLrL0zCLT" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+        <iframe src="https://www.youtube.com/embed/3iWLTzlO0gs?si=vRDUmwRxwti0IDAA" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
     </div>
 
 Этот код написан для платформы Arduino и использует некоторые дополнительные библиотеки для управления устройством Agrolab multibot с задачами, связанными с перемещением, измерением температуры, влажности и другими функциями. Давайте разберём каждую часть кода:
