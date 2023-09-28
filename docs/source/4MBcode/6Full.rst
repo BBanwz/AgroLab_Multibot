@@ -1315,4 +1315,60 @@
     float Iter;
     
         
+::
+
+    //    Фрагмент кода из work.h 
+    
+    int drill(int rows = 3, int columns = 2)
+    {
+      moveX(X_MAX);
+      moveY(Y_MAX);
+      
+      Iter = rows * columns;
+      WorkingProg = 100 /  Iter;
+    
+      for (int j = 1; j < columns + 1; j++) {
+        for (int i = 1; i < rows + 1; i++) {
+          if (force_stop)
+          {
+            stopped = true;
+            return 1;
+          }
+    
+          
+          
+          moveY(stepperY.currentPosition() - (Y_MAX / (rows + 1)));
+          moveZ(DRILL_Z);
+          stepperX.setMaxSpeed(500.0);
+          stepperX.setSpeed(300);
+          stepperX.setAcceleration(80000);
+    
+          stepperY.setMaxSpeed(500.0);
+          stepperY.setSpeed(300);
+          stepperY.setAcceleration(80000);
+    
+          moveY(stepperY.currentPosition() - 50);
+          moveX(stepperX.currentPosition() - 50);
+          moveY(stepperY.currentPosition() + 100);
+          moveX(stepperX.currentPosition() + 100);
+          moveY(stepperY.currentPosition() - 50);
+          moveX(stepperX.currentPosition() - 50);
+    
+          stepperX.setMaxSpeed(1000.0*0.58);
+          stepperX.setSpeed(500*0.58);
+          stepperX.setAcceleration(80000);
         
+          stepperY.setMaxSpeed(1000.0*0.58);
+          stepperY.setSpeed(500*0.58);
+          stepperY.setAcceleration(80000);
+    
+          moveZ(DRILL_Z - 2300);
+    
+          Perc = Perc + WorkingProg;
+        }
+    
+        moveX(stepperX.currentPosition() - (X_MAX / (columns + 1)));
+        moveY(Y_MAX);
+      }
+    
+      homeZ();
