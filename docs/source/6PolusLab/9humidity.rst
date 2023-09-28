@@ -1,3 +1,4 @@
+
 Датчик влажности почвы
 ----------------------
 
@@ -75,9 +76,14 @@
 
 Работоспособность устройства можно проверить, взяв его в руки. Это изменить проводимость внешней среды, что тут же можно будет увидеть на экране блока управления.
 
-.. figure:: images/24.jpeg
+.. figure:: images/24.jpg
        :width: 45%
        :align: center
        :alt: Устройство датчика влажности почвы
 
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="https://www.youtube.com/embed/hzf_bbETOKk?si=rgpmEgK6zY6jB0rB" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
 

@@ -46,17 +46,9 @@
 Пример
 ~~~~~~
 
-.. |pic1| image:: images/5.jpg
-   :width: 30% 
-
-.. |pic2| image:: images/6.jpg
-   :width: 30%
 
 
-|pic1| |pic2|
-
-
-Я использовал датчик освещённости, встроенный в блок, чтобы продемонстрировать пример работы программы веб интерфейся Polus Lab. Следуя вышеописанному плану, я провёл эксперимен, поочерёдно то освещая люксометр фонариком телефона, то закрывая его пальцем. Результаты представлены ниже
+Мы использовали датчик освещённости, встроенный в блок, чтобы продемонстрировать пример работы программы веб интерфейся Polus Lab. Следуя вышеописанному плану, мы провели эксперимент, поочерёдно то освещая люксометр фонариком телефона, то закрывая его пальцем. Результаты представлены ниже
 
 .. |pic3| image:: images/7.png
    :width: 44% 
@@ -66,4 +58,10 @@
 
 
 |pic3| |pic4|
+
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="https://www.youtube.com/embed/5aF_WVDNSBs?si=mhg1DitBQ_-ctvXv" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
 

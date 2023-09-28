@@ -63,9 +63,14 @@
 
 Результаты измерений после взятия датчика в изучаемый раствор. График приобретает вид прямой, так как значение pH в растворе не меняется. 
 
-.. figure:: images/12.jpeg
+.. figure:: images/12.jpg
        :width: 45%
        :align: center
        :alt: Датчик pH раствора
 
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="https://www.youtube.com/embed/hfSocGPd2nQ?si=S5jxWuGXUg4deOw5&amp;controls=0" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
 
