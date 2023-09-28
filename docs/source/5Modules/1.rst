@@ -1,7 +1,19 @@
 Насадки
 =======
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="https://www.youtube.com/embed/PTOQTnFH1U0?si=K7-OUtY-aop9DtZs" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
+
 
 В конструкции всего образовательного модуля позиционирования для выполнения задач, присутствуют 6 сменных модулей:
+
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="https://www.youtube.com/embed/Zwa4jom7XvI?si=uAwR-FnpwFVvfkfu" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
 
 1. Модуль захвата. Захват – разновидность эффектора, предназначенная для удержания и перемещения. Захват входит в прямой контакт с продуктом, поэтому важно выбрать правильный тип захвата, наиболее подходящий для целевых объектов, который сможет надежно удерживать и не повредить их. В предоставленной работе используется конструкция, которая позволяет осуществлять подъем и внедрение луковиц в почву, с учётом размеров заранее приготовленной луковицы.
 
